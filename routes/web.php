@@ -25,7 +25,7 @@ Route::get('/sobre-nos', [\App\Http\Controllers\SobreNosController::class, 'sobr
 Route::get('/contato', [\App\Http\Controllers\ContatoController::class, 'contato']);
 // Nome, categoria, assunto, mensagem
 
-Route::get('/contato/{nome}/{categoria}/{assunto}/{mensagem?}', function(string $nome, string $categoria, string $assunto, string $mensagem = 'Mensagem não enviada'){
-    echo 'estamos aqui: ' . $nome . '<br>Veio falar sobre: ' . $categoria, '<br> Assunto:' . $assunto . '<br> Mensagem:' . $mensagem . ' ';
+Route::get('/contato/{nome}/{categoria_id}', function(string $nome, int $categoria_id = 1){
+    echo 'estamos aqui: ' . $nome . '<br>Veio falar sobre: ' . $categoria_id;
     // Parâmetros opcionais devem ser passados da direita para a esquerda!!!
-});
+})->where('categoria_id','[0-9]+')->where('nome','[A-Za-z]+');

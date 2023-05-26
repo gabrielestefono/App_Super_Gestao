@@ -1,4 +1,7 @@
 <h3> Contato (view) </h3>
 
-<a href="/">Principal</a>
-<a href="/sobre-nos">Sobre nós</a>
+<ul>
+    <li><a href="/">Principal</a></li>
+    <li><a href="/sobre-nos">Sobre nós</a></li>
+    <li><a href="/contato">Contato</a></li>
+</ul>

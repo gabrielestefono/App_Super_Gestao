@@ -1,8 +1,15 @@
 <h3>Fornecedores</h3>
 
-<p>Fornecedor: {{$fornecedores[0]['nome']}}</p>
-<p>Status: {{$fornecedores[0]['status']}}</p>
+@php
 
-@unless($fornecedores[0]['status'] == 'S')
-<p> Fornecedor Inativo </p>
-@endunless
+// if(isset($variável)){} // Checa se a variável está definida
+
+@endphp
+
+@isset($fornecedores)
+    <p>Fornecedor: {{$fornecedores[0]['nome']}}</p>
+    <p>Status: {{$fornecedores[0]['status']}}</p>
+    @isset($fornecedores[0]['cnpj'])
+    <p>CPNJ: {{$fornecedores[0]['cnpj']}}</p>
+    @endisset
+@endisset

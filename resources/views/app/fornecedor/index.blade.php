@@ -7,13 +7,7 @@
 @endphp
 
 @isset($fornecedores)
-    <p>Fornecedor: {{$fornecedores[1]['nome']}}</p>
-    <p>Status: {{$fornecedores[1]['status']}}</p>
-    @isset($fornecedores[1]['cnpj'])
-        <p>CPNJ: {{ $fornecedores[1]['cnpj'] }}
-        @empty($fornecedores[1]['cnpj'])
-            Vazio
-        @endempty
-        </p>
-    @endisset
-@endisset   
+    <p>Fornecedor: {{$fornecedores[0]['nome']}}</p>
+    <p>Status: {{$fornecedores[0]['status']}}</p>
+    <p>CNPJ: {{$fornecedores[0]['cnpj']  ?? "Dado não foi preenchido" }}</p>
+@endisset

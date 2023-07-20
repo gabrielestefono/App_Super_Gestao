@@ -17,7 +17,12 @@ class ContatoController extends Controller
         $contato->save();
         $contato = new SiteContato();
         $contato->create($request->all());*/
-        return view('site.contato', ['titulo'=>'Contato']);
+        $motivoContato = [
+            "1" => "Dúvida",
+            "2" => "Elogio",
+            "3" => "Reclamação"
+        ];
+        return view('site.contato', ['titulo'=>'Contato', "motivoContato" => $motivoContato]);
     }
 
     public function salvar(Request $request){

@@ -8,6 +8,11 @@ class PrincipalController extends Controller
 {
     public function principal(){
         $titulo = 'Home';
-        return view('site.principal', compact('titulo'));
+        $motivoContato = [
+            "1" => "Dúvida",
+            "2" => "Elogio",
+            "3" => "Reclamação"
+        ];
+        return view('site.principal', ["titulo" => $titulo, "motivoContato" => $motivoContato]);
     }
 }

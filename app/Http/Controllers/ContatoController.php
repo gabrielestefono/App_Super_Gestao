@@ -8,15 +8,20 @@ use Illuminate\Http\Request;
 class ContatoController extends Controller
 {
     public function contato(Request $request){
-        /*$contato = new SiteContato();
-        $contato->nome = $request->input('nome');
-        $contato->telefone = $request->input('telefone');
-        $contato->email = $request->input('email');
-        $contato->motivoContato = $request->input('motivoContato');
-        $contato->mensagem = $request->input('mensagem');
-        $contato->save();
-        $contato = new SiteContato();
-        $contato->create($request->all());*/
+        // $contato = new SiteContato();
+        // $contato->nome = $request->input('nome');
+        // $contato->telefone = $request->input('telefone');
+        // $contato->email = $request->input('email');
+        // $contato->motivoContato = $request->input('motivoContato');
+        // $contato->mensagem = $request->input('mensagem');
+        // $contato->save();
+
+        // $contato = new SiteContato();
+        // $contato->fill($request->all());
+        // $contato->save();
+
+        // $contato = new SiteContato();
+        // $contato->create($request->all());
         $motivoContato = [
             "1" => "Dúvida",
             "2" => "Elogio",
@@ -34,6 +39,9 @@ class ContatoController extends Controller
                 "motivoContato" => "required",
                 "mensagem" => "required|max:2000"
             ]);
-        //SiteContato::create($request->all());
+
+
+
+        // SiteContato::create($request->all());
     }
 }

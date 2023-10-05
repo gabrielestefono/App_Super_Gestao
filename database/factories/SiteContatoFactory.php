@@ -17,7 +17,7 @@ class SiteContatoFactory extends Factory
             "nome" => $this->faker->name,
             "telefone" => $this->faker->tollFreePhoneNumber,
             "email" => $this->faker->unique()->safeEmail,
-            "motivoContato" => $this->faker->numberBetween(1, 3),
+            "motivo_contato" => $this->faker->numberBetween(1, 3),
             "mensagem" => $this->faker->text(200)
         ];
     }

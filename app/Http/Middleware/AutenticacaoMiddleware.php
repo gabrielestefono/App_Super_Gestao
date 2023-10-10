@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Models\LogAcesso;
 
-class LogAcessoMiddleware
+class AutenticacaoMiddleware
 {
     /**
      * Handle an incoming request.
@@ -17,12 +16,10 @@ class LogAcessoMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        $ip = $request->server->get('REMOTE_ADDR');
-
-        $ROTA = $request->getRequestUri();
-
-        LogAcesso::create(['log' => "IP $ip requisitou a rota $ROTA"]);
-
-        return $next($request);
+        if(true){
+            return $next($request);
+        }else{
+            return response("Acesso negado! A rota exige autenticação.");
+        }
     }
 }

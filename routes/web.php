@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 */
 
-Route::get('/', [\App\Http\Controllers\PrincipalController::class, 'principal'])->name('site.index')->middleware('Log.acesso');
+Route::get('/', [\App\Http\Controllers\PrincipalController::class, 'principal'])->name('site.index')->middleware('log.acesso');
 Route::get('/sobre-nos', [\App\Http\Controllers\SobreNosController::class, 'sobreNos'])->name('site.sobre-nos');
 Route::get('/contato', [\App\Http\Controllers\ContatoController::class, 'contato'])->name('site.contato');
 Route::post('/contato', [\App\Http\Controllers\ContatoController::class, 'salvar'])->name('site.contato');
@@ -27,9 +27,9 @@ Route::get('/login', function(){return 'Login';})->name('site.login');
 
 // Rotas restritas /app
 Route::prefix('/app')->group(function(){
-    Route::get('/clientes', function(){return 'Clientes';})->name('app.clientes');
-    Route::get('/fornecedores', [\App\Http\Controllers\FornecedoresController::class, 'index'])->name('app.fornecedores');
-    Route::get('/produtos', function(){return 'Produtos';})->name('app.produtos');
+    Route::middleware('log.acesso', 'autenticacao')->get('/clientes', function(){return 'Clientes';})->name('app.clientes');
+    Route::middleware('log.acesso', 'autenticacao')->get('/fornecedores', [\App\Http\Controllers\FornecedoresController::class, 'index'])->name('app.fornecedores');
+    Route::middleware('log.acesso', 'autenticacao')->get('/produtos', function(){return 'Produtos';})->name('app.produtos');
 });
 
 Route::get('/teste/{p1}/{p2}', [\App\Http\Controllers\TesteController::class, 'teste'])->name('site.teste');

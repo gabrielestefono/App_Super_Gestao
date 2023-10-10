@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use App\Models\LogAcesso;
 
 class LogAcessoMiddleware
 {
@@ -17,6 +18,13 @@ class LogAcessoMiddleware
     public function handle(Request $request, Closure $next)
     {
         // return $next($request);
+
+        $ip = $request->server->get('REMOTE_ADDR');
+
+        $ROTA = $request->getRequestUri();
+
+        LogAcesso::create(['log' => "IP $ip requisitou a rota $ROTA"]);
+
         return response('Chegamos no middleware e finalizamos aqui mesmo');
     }
 }

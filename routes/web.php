@@ -26,7 +26,7 @@ Route::post('/contato', [\App\Http\Controllers\ContatoController::class, 'salvar
 Route::get('/login', function(){return 'Login';})->name('site.login');
 
 // Rotas restritas /app
-Route::middleware('autenticacao')->prefix('/app')->group(function(){
+Route::middleware('autenticacao:padrao,visitante')->prefix('/app')->group(function(){
     Route::get('/clientes', function(){return 'Clientes';})->name('app.clientes');
     Route::get('/fornecedores', [\App\Http\Controllers\FornecedoresController::class, 'index'])->name('app.fornecedores');
     Route::get('/produtos', function(){return 'Produtos';})->name('app.produtos');

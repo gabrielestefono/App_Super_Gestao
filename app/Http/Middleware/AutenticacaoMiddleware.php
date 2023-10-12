@@ -14,8 +14,20 @@ class AutenticacaoMiddleware
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $metodo_autenticacao, $perfil)
     {
+        if($metodo_autenticacao == 'padrao'){
+            echo 'Verificar o usuario e senha no banco de dados.' . $perfil . '<br>';
+        }else if($metodo_autenticacao == 'ldap'){
+            echo 'Verificar usuario e senha do AD.' . $perfil . '<br>';
+        }
+
+        if($perfil == 'visitante'){
+            echo "Exibir apenas algumas rotas . <br>";
+        }else{
+            echo "Dar acesso normal. <br>";
+        }
+
         if(false){
             return $next($request);
         }else{

@@ -23,7 +23,8 @@ Route::get('/', [\App\Http\Controllers\PrincipalController::class, 'principal'])
 Route::get('/sobre-nos', [\App\Http\Controllers\SobreNosController::class, 'sobreNos'])->name('site.sobre-nos');
 Route::get('/contato', [\App\Http\Controllers\ContatoController::class, 'contato'])->name('site.contato');
 Route::post('/contato', [\App\Http\Controllers\ContatoController::class, 'salvar'])->name('site.contato');
-Route::get('/login', function(){return 'Login';})->name('site.login');
+Route::get('/login', [\App\Http\Controllers\LoginController::class, 'index'])->name('site.login');
+Route::post('/login', [\App\Http\Controllers\LoginController::class, 'autenticar'])->name('site.login');
 
 // Rotas restritas /app
 Route::middleware('autenticacao:padrao,visitante')->prefix('/app')->group(function(){

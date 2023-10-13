@@ -7,8 +7,15 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function index(){
-        return view('site.login', ['titulo' => 'Login']);
+    public function index(Request $request){
+
+        $erro = '';
+
+        if($request->get('erro') == 1){
+            $erro = 'O usuário e/ou senha não existe.';
+        }
+
+        return view('site.login', ['titulo' => 'Login', 'error' => $erro]);
     }
 
     public function autenticar(Request $request){
@@ -36,9 +43,12 @@ class LoginController extends Controller
         $usuario = $user->where('email', $email)->where('password', $password)->get()->first();
 
         if(isset($usuario->name)){
-            dd('Usuario existe!');
+            session_start();
+            $_SESSION['nome'] = $usuario->name;
+            $_SESSION['email'] = $usuario->email;
+            dd($_SESSION);
         }else{
-            dd('Usuario não existe!');
+            return redirect()->route('site.login', ['erro' => 1]);
         }
 
     }

@@ -13,6 +13,8 @@ class LoginController extends Controller
 
         if($request->get('erro') == 1){
             $erro = 'O usuário e/ou senha não existe.';
+        }else if($request->get('erro') == 2){
+            $erro = 'Falha na verificação do usuário.';
         }
 
         return view('site.login', ['titulo' => 'Login', 'error' => $erro]);
@@ -46,10 +48,10 @@ class LoginController extends Controller
             session_start();
             $_SESSION['nome'] = $usuario->name;
             $_SESSION['email'] = $usuario->email;
-            dd($_SESSION);
+
+            return redirect()->route('app.clientes');
         }else{
             return redirect()->route('site.login', ['erro' => 1]);
         }
-
     }
 }

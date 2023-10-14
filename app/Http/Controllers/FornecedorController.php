@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class FornecedoresController extends Controller
+class FornecedorController extends Controller
 {
     public function index(){
         $fornecedores = [
@@ -12,6 +12,6 @@ class FornecedoresController extends Controller
             1=>["nome" => "Fornecedor 2", "status" => "S", 'cnpj' => null, 'ddd'=>'85', 'telefone'=>'0000-0000'],
             2=>["nome" => "Fornecedor 3", "status" => "S", 'cnpj' => null, 'ddd'=>'32', 'telefone'=>'0000-0000'],
         ];
-        return view("app.fornecedor.index", compact("fornecedores"));
+        return view("app.fornecedor", compact("fornecedores"));
     }
 }

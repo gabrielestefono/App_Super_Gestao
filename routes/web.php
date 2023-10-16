@@ -33,10 +33,13 @@ Route::middleware('autenticacao:padrao,visitante')->prefix('/app')->group(functi
     Route::get('/sair', [\App\Http\Controllers\LoginController::class, 'sair'])->name('app.sair');
     Route::get('/cliente', [\App\Http\Controllers\ClienteController::class, 'index'])->name('app.cliente');
     Route::get('/fornecedor', [\App\Http\Controllers\FornecedorController::class, 'index'])->name('app.fornecedor');
+    Route::post('/fornecedor/listar', [\App\Http\Controllers\FornecedorController::class, 'listar'])->name('app.fornecedor.listar');
+    Route::get('/fornecedor/adicionar', [\App\Http\Controllers\FornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
+    Route::post('/fornecedor/adicionar', [\App\Http\Controllers\FornecedorController::class, 'adicionar'])->name('app.fornecedor.adicionar');
     Route::get('/produto', [\App\Http\Controllers\ProdutoController::class, 'index'])->name('app.produto');
 });
 
-Route::get('/teste/{p1}/{p2}', [\App\Http\Controllers\TesteController::class, 'teste'])->name('site.teste');
+Route::get('/teste', [\App\Http\Controllers\TesteController::class, 'teste'])->name('site.teste');
 
 Route::fallback(function(){
     echo 'A rota acessada não existe, <a href="' . route('site.index') . '">clique</a> aqui para ir para a página inicial';

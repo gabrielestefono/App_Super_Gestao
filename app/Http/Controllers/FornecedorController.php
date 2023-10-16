@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fornecedor;
 use Illuminate\Http\Request;
 
 class FornecedorController extends Controller
@@ -21,9 +22,10 @@ class FornecedorController extends Controller
     }
 
     public function adicionar(Request $request){
+        $msg = '';
+
         if($request->input('_token') != ""){
-            //
-            echo 'Cadastro';
+
             $regras = [
                 'nome' => 'required|min:3|max:40',
                 'site' => 'required',
@@ -44,8 +46,12 @@ class FornecedorController extends Controller
 
             $request->validate($regras, $feedback);
 
-            echo 'Chegamos até aqui';
+            $fornecedor = new Fornecedor();
+            $fornecedor->create($request->all());
+
+            $msg = "Cadastro finalizado com sucesso!";
+
         }
-        return view('app.fornecedor.adicionar');
+        return view('app.fornecedor.adicionar', ["msg" => $msg]);
     }
 }

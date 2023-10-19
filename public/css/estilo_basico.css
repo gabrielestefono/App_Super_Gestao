@@ -194,3 +194,19 @@ button:hover {
 .redes-sociais img {
     margin: 0px 15px 0px 15px;
 }
+
+.w-5{
+    width: 1rem;
+}
+
+.flex-1, p.text-sm {
+    display: none !important;
+}
+
+div.hidden > div:last-child > span{
+    margin-top: 1.25rem;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 15px;
+}

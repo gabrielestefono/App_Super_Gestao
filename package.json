@@ -10,9 +10,12 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "autoprefixer": "^10.4.16",
         "axios": "^0.21",
+        "install": "^0.13.0",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "npm": "^10.2.1",
+        "postcss": "^8.4.31"
     }
 }

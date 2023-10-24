@@ -39,6 +39,11 @@
                 </table>
 
                 {{$fornecedores->appends($request)->links()}}
+                {{ $fornecedores->count() }} - Total de registros por página
+                <br>
+                {{$fornecedores->total()}} registros
+                <br>
+                {{$fornecedores->firstItem()}} - Primeiro registro da página
         </div>
         </div>
     </div>

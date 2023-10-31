@@ -69,7 +69,6 @@ class ProdutoController extends Controller
      */
     public function show(Produto $produto)
     {
-        $produto = Produto::find($produto->id)->first();
         return view('app.produto.show', ['produto' => $produto]);
     }
 
@@ -94,7 +93,27 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
-        //
+        $regras = [
+            'nome' => 'required|min:3|max:40',
+            'descricao' => 'required|min:3|max:2000',
+            'peso' => 'required|integer',
+            'unidade_id' => 'exists:unidades,id'
+        ];
+
+        $feedback = [
+            'required' => 'O campo :attribute deve ser preenchido',
+            'min:3' => 'O campo :attribute deve ter no mínimo 3 caracteres',
+            'max:40' => 'O campo nome deve ter no máximo 40 caracteres',
+            'max:2000' => 'O campo descrição deve ter no máximo 2000 caracteres',
+            'integer' => 'O campo peso deve ser um numero do tipo inteiro',
+            'exists' => 'A unidade de medida informada não existe'
+        ];
+
+        $request->validate($regras, $feedback);
+
+        $produto->update($request->all());
+
+        return view('app.produto.show', ['produto' => $produto]);
     }
 
     /**

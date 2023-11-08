@@ -11,6 +11,7 @@
             </ul>
         </div>
         <div class="informacao-pagina">
+            {{$produtoDetalhe->toJson()}}
             <div style="width: 30%; margin-left: auto; margin-right: auto;">
                 <h4>Produto</h4>
                 <div>

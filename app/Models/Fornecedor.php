@@ -10,9 +10,15 @@ class Fornecedor extends Model
 {
     use SoftDeletes;
 
+    use HasFactory;
+
     protected $table = "fornecedores";
 
     protected $fillable = ['nome', 'site', 'uf', 'email'];
 
-    use HasFactory;
+    public function produtos(){
+        return $this->hasMany('App\Models\Item', 'fornecedor_id', 'id');
+        // return $this->hasMany('App\Models\Item');
+    }
+
 }

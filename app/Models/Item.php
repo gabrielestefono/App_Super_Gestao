@@ -20,4 +20,8 @@ class Item extends Model
     public function fornecedor(){
         return $this->belongsTo('App\Models\Fornecedor');
     }
+
+    public function pedidos(){
+        return $this->belongsToMany(Pedido::class, 'pedidos_produtos', 'produto_id', 'pedido_id')->withPivot('id', 'created_at', 'updated_at');
+    }
 }
